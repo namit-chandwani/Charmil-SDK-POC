@@ -1,4 +1,4 @@
-package pluginloader
+package plugincore
 
 type PluginConfig struct {
 	Commands []CommandConfig `yaml:"commands"`
@@ -10,7 +10,7 @@ type CommandConfig struct {
 	MapsTo           ArgsMapConfig `yaml:"mapsTo"`
 	Flags            []FlagConfig  `yaml:"flags"`
 	ShortDescription string        `yaml:"shortDescription"`
-	Examples            string        `yaml:"usage"`
+	Examples         string        `yaml:"usage"`
 }
 
 type ArgsMapConfig struct {

@@ -1,11 +1,11 @@
-# Socket
+# HostCLI POC
 
 Extend your command-line interface with any binary!
 
 ## Build
 
 1. Run `make`
-2. Run `./socket -h` to list available commands
+2. Run `./host -h` to list available commands
 
 ## POC
 

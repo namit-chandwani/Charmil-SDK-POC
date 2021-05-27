@@ -1,4 +1,4 @@
-package pluginloader
+package plugincore
 
 import (
 	"bytes"
@@ -14,7 +14,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-func AddCommands(cmd *cobra.Command) error {
+func NewCommand(cmd *cobra.Command) error {
 	cwd, err := os.Getwd()
 	if err != nil {
 		return err
@@ -43,10 +43,9 @@ func addCommand(cmdCfg *CommandConfig) *cobra.Command {
 		Use:           cmdCfg.Name,
 		Short:         cmdCfg.ShortDescription,
 		SilenceErrors: true,
-		Example: cmdCfg.Examples,
+		Example:       cmdCfg.Examples,
 		Args:          cobra.ExactArgs(len(cmdCfg.MapsTo.Args)),
 		RunE: func(cmd *cobra.Command, args []string) error {
-
 			args = append([]string{cmdCfg.MapsTo.Subcommand}, args...)
 			c := exec.Command(cmdCfg.MapsTo.Name, args...)
 			c.Stdin = os.Stdin
