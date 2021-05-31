@@ -1,4 +1,4 @@
-package extension
+package plugin
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 // RemoveCmd represents the remove command
 var RemoveCmd = &cobra.Command{
 	Use:   "remove",
-	Short: "Remove extensions",
+	Short: "Remove plugins",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("remove called")

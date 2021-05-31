@@ -15,4 +15,4 @@
 vendor/
 
 /host
-/extension
+/plugin

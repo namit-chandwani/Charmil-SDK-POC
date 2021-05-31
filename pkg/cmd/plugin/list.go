@@ -1,4 +1,4 @@
-package extension
+package plugin
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 // ListCmd represents the list command
 var ListCmd = &cobra.Command{
 	Use:   "list",
-	Short: "List all extensions",
+	Short: "List all plugins",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("list called")

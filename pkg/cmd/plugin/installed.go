@@ -1,4 +1,4 @@
-package extension
+package plugin
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 // InstalledCmd represents the installed command
 var InstalledCmd = &cobra.Command{
 	Use:   "installed",
-	Short: "Show installed extensions",
+	Short: "Show installed plugins",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("installed called")

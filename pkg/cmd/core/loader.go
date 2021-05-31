@@ -1,4 +1,4 @@
-package plugincore
+package core
 
 import (
 	"bytes"

@@ -1,4 +1,4 @@
-package plugincore
+package core
 
 type PluginConfig struct {
 	Commands []CommandConfig `yaml:"commands"`

@@ -1,15 +1,15 @@
-package plugincore
+package core
 
 import (
 	"log"
 
-	ext "github.com/namit-chandwani/HostCLI-POC/pkg/cmd/extension"
+	ext "github.com/namit-chandwani/Charmil-SDK-POC/pkg/cmd/plugin"
 	"github.com/spf13/cobra"
 )
 
 const (
-	hostKey      = "host"
-	extensionKey = "extension"
+	hostKey   = "host"
+	pluginKey = "plugin"
 )
 
 type CLI interface {
@@ -17,13 +17,13 @@ type CLI interface {
 }
 
 type host struct{}
-type extension struct{}
+type plugin struct{}
 
 func (h host) AddCommands(cmd *cobra.Command) error {
 	return NewCommand(cmd)
 }
 
-func (e extension) AddCommands(cmd *cobra.Command) error {
+func (e plugin) AddCommands(cmd *cobra.Command) error {
 	cmd.AddCommand(ext.InstallCmd, ext.InstalledCmd, ext.ListCmd, ext.RemoveCmd)
 	return nil
 }
@@ -32,8 +32,8 @@ func GetCLI(cliType string) CLI {
 	switch cliType {
 	case hostKey:
 		return &host{}
-	case extensionKey:
-		return &extension{}
+	case pluginKey:
+		return &plugin{}
 	default:
 		log.Printf("Undefined CLI type")
 		return nil
