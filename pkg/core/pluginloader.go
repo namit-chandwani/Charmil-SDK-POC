@@ -63,7 +63,7 @@ func newCommands(cmd *cobra.Command, pluginFilename string) error {
 	if err != nil {
 		return err
 	}
-	b, err := ioutil.ReadFile(path.Join(cwd, "./plugins/"+pluginFilename)) // Todo: Modify this for multiple arguments
+	b, err := ioutil.ReadFile(path.Join(cwd, "./plugins/"+pluginFilename))
 	if err != nil {
 		return err
 	}
@@ -90,7 +90,9 @@ func addCommand(cmdCfg *CommandConfig) *cobra.Command {
 		Example:       cmdCfg.Examples,
 		Args:          cobra.ExactArgs(len(cmdCfg.MapsTo.Args)),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			args = append([]string{cmdCfg.MapsTo.Subcommand}, args...)
+			if cmdCfg.MapsTo.Subcommand != "" {
+				args = append([]string{cmdCfg.MapsTo.Subcommand}, args...)
+			}
 			c := exec.Command(cmdCfg.MapsTo.Name, args...)
 			c.Stdin = os.Stdin
 			c.Stdout = os.Stdout
