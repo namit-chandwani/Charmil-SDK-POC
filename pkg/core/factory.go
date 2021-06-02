@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 
-	ext "github.com/namit-chandwani/Charmil-SDK-POC/pkg/cmd/charmil"
 	"github.com/spf13/cobra"
 )
 
@@ -14,7 +13,7 @@ const (
 )
 
 type CLI interface {
-	AddCommands(cmd *cobra.Command) error
+	AddCommands(cmd *cobra.Command, subcommands ...*cobra.Command) error
 }
 
 // cliConfig represents configuration settings common to both Host and Plugin CLI
@@ -33,15 +32,18 @@ type plugin struct {
 	// Todo: Add more fields
 }
 
-func (h host) AddCommands(cmd *cobra.Command) error {
-	fmt.Println("Command added to host CLI")
+func (h host) AddCommands(cmd *cobra.Command, subcommands ...*cobra.Command) error {
+	fmt.Println("Subcommands added to host CLI")
+	cmd.AddCommand(subcommands...)
 
-	// Todo: Add logic
+	// Todo: Add config logic
 	return nil
 }
 
-func (p plugin) AddCommands(cmd *cobra.Command) error {
-	cmd.AddCommand(ext.InstallCmd, ext.InstalledCmd, ext.ListCmd, ext.RemoveCmd, ext.ActivateCmd, ext.DeactivateCmd)
+func (p plugin) AddCommands(cmd *cobra.Command, subcommands ...*cobra.Command) error {
+	cmd.AddCommand(subcommands...)
+
+	// Todo: Add config logic
 	return nil
 }
 

@@ -3,12 +3,15 @@ package main
 import (
 	"log"
 
+	"github.com/namit-chandwani/Charmil-SDK-POC/pkg/cmd/charmil"
 	"github.com/namit-chandwani/Charmil-SDK-POC/pkg/core"
 	"github.com/spf13/cobra"
 	"github.com/spf13/cobra/doc"
 )
 
 const cliKey = "plugin"
+
+var subcommands = []*cobra.Command{charmil.InstallCmd, charmil.InstalledCmd, charmil.ListCmd, charmil.RemoveCmd, charmil.ActivateCmd, charmil.DeactivateCmd}
 
 func main() {
 	cmd := &cobra.Command{
@@ -18,7 +21,7 @@ func main() {
 	}
 
 	charmilCLI := core.GetCLI(cliKey)
-	err := charmilCLI.AddCommands(cmd)
+	err := charmilCLI.AddCommands(cmd, subcommands...)
 	if err != nil {
 		log.Fatal(err)
 	}
