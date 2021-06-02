@@ -2,7 +2,6 @@ package core
 
 import (
 	"bytes"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -74,7 +73,6 @@ func newCommands(cmd *cobra.Command, pluginFilename string) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(cliPlugin.Commands)
 
 	if &cliPlugin.Commands != nil && len(cliPlugin.Commands) > 0 {
 		for _, cfg := range cliPlugin.Commands {
