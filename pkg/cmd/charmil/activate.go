@@ -14,7 +14,7 @@ var ActivateCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("activate called")
 
-		// Add code for plugin validation
+		// Todo: Add code for plugin validation
 	},
 }
 

@@ -23,11 +23,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// err := core.AddCommands(cmd)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
 	err = doc.GenMarkdownTree(cmd, "./docs/commands")
 	if err != nil {
 		log.Fatal(err)

@@ -1,4 +1,4 @@
-package core
+package charmil
 
 import (
 	"bytes"
@@ -43,7 +43,7 @@ type FlagConfig struct {
 	Alias        string `yaml:"alias"`
 }
 
-func NewCommand(cmd *cobra.Command) error {
+func LoadCommands(cmd *cobra.Command) error {
 	cwd, err := os.Getwd()
 	if err != nil {
 		return err
