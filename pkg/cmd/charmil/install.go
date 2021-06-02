@@ -1,11 +1,10 @@
 package charmil
 
 import (
-	"bytes"
 	"fmt"
-	"io"
+	"io/ioutil"
 	"os"
-	"os/exec"
+	"path"
 
 	"github.com/spf13/cobra"
 )
@@ -24,14 +23,20 @@ var InstallCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
+		b, err := ioutil.ReadFile(path.Join(cwd, "./plugins/git.yaml"))
+		if err != nil {
+			return err
+		}
 		fmt.Println(cwd)
-		c := exec.Command("ls", args...)
-		c.Stdin = os.Stdin
-		c.Stdout = os.Stdout
-		var buf bytes.Buffer
-		c.Stderr = io.MultiWriter(os.Stderr, &buf)
+		fmt.Println(b)
+		// c := exec.Command("ls", args...)
+		// c.Stdin = os.Stdin
+		// c.Stdout = os.Stdout
+		// var buf bytes.Buffer
+		// c.Stderr = io.MultiWriter(os.Stderr, &buf)
+		// return c.Run()
 
-		return c.Run()
+		return nil
 	},
 }
 

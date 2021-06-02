@@ -3,10 +3,8 @@ package charmil
 import (
 	"bytes"
 	"io"
-	"io/ioutil"
 	"os"
 	"os/exec"
-	"path"
 	"strconv"
 
 	"github.com/spf13/cobra"
@@ -43,17 +41,9 @@ type FlagConfig struct {
 	Alias        string `yaml:"alias"`
 }
 
-func LoadCommands(cmd *cobra.Command) error {
-	cwd, err := os.Getwd()
-	if err != nil {
-		return err
-	}
-	b, err := ioutil.ReadFile(path.Join(cwd, "./plugins/git.yaml"))
-	if err != nil {
-		return err
-	}
+func LoadCommands(cmd *cobra.Command, b []byte) error {
 	var cliPlugin *PluginConfig
-	err = yaml.Unmarshal(b, &cliPlugin)
+	err := yaml.Unmarshal(b, &cliPlugin)
 	if err != nil {
 		return err
 	}
