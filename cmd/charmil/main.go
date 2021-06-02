@@ -8,17 +8,17 @@ import (
 	"github.com/spf13/cobra/doc"
 )
 
-const hostKey = "host"
+const pluginKey = "plugin"
 
 func main() {
 	cmd := &cobra.Command{
-		Use:          "host",
-		Short:        "Host commands",
+		Use:          "charmil",
+		Short:        "Commands for managing plugins",
 		SilenceUsage: true,
 	}
 
-	hostCLI := core.GetCLI(hostKey)
-	err := hostCLI.AddCommands(cmd)
+	pluginCLI := core.GetCLI(pluginKey)
+	err := pluginCLI.AddCommands(cmd)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -28,7 +28,7 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 
-	err = doc.GenMarkdownTree(cmd, "./docs/commands/host")
+	err = doc.GenMarkdownTree(cmd, "./docs/commands")
 	if err != nil {
 		log.Fatal(err)
 	}

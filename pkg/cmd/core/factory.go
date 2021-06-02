@@ -24,7 +24,7 @@ func (h host) AddCommands(cmd *cobra.Command) error {
 }
 
 func (e plugin) AddCommands(cmd *cobra.Command) error {
-	cmd.AddCommand(ext.InstallCmd, ext.InstalledCmd, ext.ListCmd, ext.RemoveCmd)
+	cmd.AddCommand(ext.InstallCmd, ext.InstalledCmd, ext.ListCmd, ext.RemoveCmd, ext.ActivateCmd, ext.DeactivateCmd)
 	return nil
 }
 

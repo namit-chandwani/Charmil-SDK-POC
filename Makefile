@@ -1,14 +1,10 @@
 .DEFAULT_GOAL := build
-HOST_BIN_FILE = host
-PLUGIN_BIN_FILE = plugin
+BIN_FILE = charmil
 
 build:
-	@go build -o "${HOST_BIN_FILE}" ./cmd/"${HOST_BIN_FILE}"
-	@go build -o "${PLUGIN_BIN_FILE}" ./cmd/"${PLUGIN_BIN_FILE}"
-run_host:
-	./"${HOST_BIN_FILE}"
-run_plugin:
-	./"${PLUGIN_BIN_FILE}"
+	@go build -o "${BIN_FILE}" ./cmd/"${BIN_FILE}"
+run:
+	./"${BIN_FILE}"
 clean:
 	go clean
-	rm -f ${HOST_BIN_FILE} ${PLUGIN_BIN_FILE}
+	rm -f ${BIN_FILE}

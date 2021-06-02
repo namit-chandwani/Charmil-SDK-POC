@@ -9,7 +9,7 @@ import (
 // InstallCmd represents the install command
 var InstallCmd = &cobra.Command{
 	Use:   "install",
-	Short: "Install plugins",
+	Short: "Install plugin(s)",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("install called")
