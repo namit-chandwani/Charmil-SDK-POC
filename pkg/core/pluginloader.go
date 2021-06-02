@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"os"
 	"os/exec"
 	"path"
@@ -44,12 +45,26 @@ type FlagConfig struct {
 	Alias        string `yaml:"alias"`
 }
 
-func LoadCommands(cmd *cobra.Command, pluginName string) error {
+func LoadCommands(cmd *cobra.Command, pluginFilename string) error {
+	pluginFilenames, err := ioutil.ReadDir("./plugins")
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, f := range pluginFilenames {
+		err = newCommands(cmd, f.Name())
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+	return nil
+}
+
+func newCommands(cmd *cobra.Command, pluginFilename string) error {
 	cwd, err := os.Getwd()
 	if err != nil {
 		return err
 	}
-	b, err := ioutil.ReadFile(path.Join(cwd, "./plugins/"+pluginName+".yaml")) // Todo: Modify this for multiple arguments
+	b, err := ioutil.ReadFile(path.Join(cwd, "./plugins/"+pluginFilename)) // Todo: Modify this for multiple arguments
 	if err != nil {
 		return err
 	}
