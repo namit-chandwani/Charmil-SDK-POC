@@ -45,7 +45,7 @@ type FlagConfig struct {
 	Alias        string `yaml:"alias"`
 }
 
-func LoadCommands(cmd *cobra.Command, pluginFilename string) error {
+func LoadCommands(cmd *cobra.Command) error {
 	pluginFilenames, err := ioutil.ReadDir("./plugins")
 	if err != nil {
 		log.Fatal(err)
