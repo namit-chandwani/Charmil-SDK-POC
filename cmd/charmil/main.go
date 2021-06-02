@@ -3,22 +3,30 @@ package main
 import (
 	"log"
 
-	"github.com/craicoverflow/socket/pkg/pluginloader"
+	"github.com/namit-chandwani/Charmil-SDK-POC/pkg/core"
 	"github.com/spf13/cobra"
 	"github.com/spf13/cobra/doc"
 )
 
+const cliKey = "plugin"
+
 func main() {
 	cmd := &cobra.Command{
-		Use:          "git-helper",
-		Short:        "Git helper commands",
+		Use:          "charmil",
+		Short:        "Commands for managing plugins",
 		SilenceUsage: true,
 	}
 
-	err := pluginloader.AddCommands(cmd)
+	charmilCLI := core.GetCLI(cliKey)
+	err := charmilCLI.AddCommands(cmd)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// err := core.AddCommands(cmd)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
 	err = doc.GenMarkdownTree(cmd, "./docs/commands")
 	if err != nil {

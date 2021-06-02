@@ -1,6 +1,6 @@
-module github.com/craicoverflow/socket
+module github.com/namit-chandwani/Charmil-SDK-POC
 
-go 1.15
+go 1.16
 
 require (
 	github.com/spf13/cobra v1.1.3

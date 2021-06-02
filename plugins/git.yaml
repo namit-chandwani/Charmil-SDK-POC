@@ -8,7 +8,7 @@ commands:
         - repository_url
     shortDescription: "Copy a remote Git directory to your local filesystem"
     usage: '
-    $ git-helper copy git@github.com:spf13/cobra.git
+    $ git-helper copy https://github.com/namit-chandwani/Go-Calculator-CLI.git
     '
     flags:
       -
