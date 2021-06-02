@@ -28,7 +28,7 @@ var InstallCmd = &cobra.Command{
 			return err
 		}
 		fmt.Println(cwd)
-		fmt.Println(b)
+		fmt.Println("File contents: ", b)
 		// c := exec.Command("ls", args...)
 		// c.Stdin = os.Stdin
 		// c.Stdout = os.Stdout
