@@ -2,9 +2,6 @@ package charmil
 
 import (
 	"fmt"
-	"io/ioutil"
-	"os"
-	"path"
 
 	"github.com/spf13/cobra"
 )
@@ -15,26 +12,8 @@ var InstallCmd = &cobra.Command{
 	Short: "Install plugin(s)",
 	Long:  ``,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		// fmt.Println("install called")
-		// return LoadCommands(cmd)
-		// args = append([]string{"docs"}, args...)
-		// fmt.Println(args)
-		cwd, err := os.Getwd()
-		if err != nil {
-			return err
-		}
-		b, err := ioutil.ReadFile(path.Join(cwd, "./plugins/git.yaml"))
-		if err != nil {
-			return err
-		}
-		fmt.Println("CWD is", cwd)
-		fmt.Println("File contents: ", b)
-		// c := exec.Command("ls", args...)
-		// c.Stdin = os.Stdin
-		// c.Stdout = os.Stdout
-		// var buf bytes.Buffer
-		// c.Stderr = io.MultiWriter(os.Stderr, &buf)
-		// return c.Run()
+		fmt.Println("install called")
+		// Temporary code. Will be later replaced with logic which downloads, extracts, installs and validates binary from manifest file
 
 		return nil
 	},

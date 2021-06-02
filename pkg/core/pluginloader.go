@@ -1,10 +1,13 @@
-package charmil
+package core
 
 import (
 	"bytes"
+	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 	"os/exec"
+	"path"
 	"strconv"
 
 	"github.com/spf13/cobra"
@@ -41,19 +44,28 @@ type FlagConfig struct {
 	Alias        string `yaml:"alias"`
 }
 
-func LoadCommands(cmd *cobra.Command, b []byte) error {
-	var cliPlugin *PluginConfig
-	err := yaml.Unmarshal(b, &cliPlugin)
+func LoadCommands(cmd *cobra.Command, pluginName string) error {
+	cwd, err := os.Getwd()
 	if err != nil {
 		return err
 	}
+	b, err := ioutil.ReadFile(path.Join(cwd, "./plugins/"+pluginName+".yaml")) // Todo: Modify this for multiple arguments
+	if err != nil {
+		return err
+	}
+
+	var cliPlugin *PluginConfig
+	err = yaml.Unmarshal(b, &cliPlugin)
+	if err != nil {
+		return err
+	}
+	fmt.Println(cliPlugin.Commands)
 
 	if &cliPlugin.Commands != nil && len(cliPlugin.Commands) > 0 {
 		for _, cfg := range cliPlugin.Commands {
 			cmd.AddCommand(addCommand(&cfg))
 		}
 	}
-
 	return nil
 }
 
