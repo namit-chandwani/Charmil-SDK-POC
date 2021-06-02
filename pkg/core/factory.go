@@ -1,7 +1,6 @@
 package core
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/spf13/cobra"
@@ -33,7 +32,6 @@ type plugin struct {
 }
 
 func (h host) AddCommands(cmd *cobra.Command, subcommands ...*cobra.Command) error {
-	fmt.Println("Subcommands added to host CLI")
 	cmd.AddCommand(subcommands...)
 
 	// Todo: Add config logic
