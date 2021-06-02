@@ -3,12 +3,12 @@ package main
 import (
 	"log"
 
-	"github.com/namit-chandwani/Charmil-SDK-POC/pkg/cmd/core"
+	"github.com/namit-chandwani/Charmil-SDK-POC/pkg/core"
 	"github.com/spf13/cobra"
 	"github.com/spf13/cobra/doc"
 )
 
-const pluginKey = "plugin"
+const cliKey = "plugin"
 
 func main() {
 	cmd := &cobra.Command{
@@ -17,8 +17,8 @@ func main() {
 		SilenceUsage: true,
 	}
 
-	pluginCLI := core.GetCLI(pluginKey)
-	err := pluginCLI.AddCommands(cmd)
+	charmilCLI := core.GetCLI(cliKey)
+	err := charmilCLI.AddCommands(cmd)
 	if err != nil {
 		log.Fatal(err)
 	}

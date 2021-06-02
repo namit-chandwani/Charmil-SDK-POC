@@ -3,7 +3,7 @@ package core
 import (
 	"log"
 
-	ext "github.com/namit-chandwani/Charmil-SDK-POC/pkg/cmd/plugin"
+	ext "github.com/namit-chandwani/Charmil-SDK-POC/pkg/cmd/charmil"
 	"github.com/spf13/cobra"
 )
 
